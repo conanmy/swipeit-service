@@ -1,0 +1,12 @@
+type User {
+  id: ID! @unique
+  name: String!
+  friends: [User!]! @relation(name: "FriendsOfUser", onDelete: CASCADE)
+}
+
+type WeeklyScore {
+  id: ID! @unique
+  user: User! @relation(name: "ScoreOwner", onDelete: CASCADE)
+  week: Int
+  score: Int
+}

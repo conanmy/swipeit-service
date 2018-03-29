@@ -1,0 +1,11 @@
+# import User, WeeklyScore from "./generated/prisma.graphql"
+
+type Query {
+  users: [User!]!,
+  user(userId: String): User!
+}
+
+type Mutation {
+  createUser(name: String, friends: [String]): User,
+  createWeeklyScore(userId: ID, score: Int): WeeklyScore
+}
