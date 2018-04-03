@@ -2,7 +2,9 @@
 
 type Query {
   users: [User!]!,
-  user(userId: String): User!
+  user(userId: String): User!,
+  userFriendsScore(userId: String): [WeeklyScore!]!,
+  weeklyScores: [WeeklyScore!]!
 }
 
 type Mutation {

@@ -6,9 +6,23 @@ const resolvers = {
     users(parent, args, ctx, info) {
       return ctx.db.query.users({}, info)
     },
+    weeklyScores(parent, args, ctx, info) {
+      return ctx.db.query.weeklyScores({}, info)
+    },
     user(parent, { userId }, ctx, info) {
       return ctx.db.query.user({
         where:{ id: userId }
+      }, info)
+    },
+    userFriendsScore(parent, { userId }, ctx, info) {
+      return ctx.db.query.weeklyScores({
+        where: {
+          user: {
+            friends_some: {
+              id: userId
+            }
+          }
+        }
       }, info)
     }
   },
